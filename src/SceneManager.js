@@ -27,7 +27,7 @@ export class SceneManager {
     this.scene = new THREE.Scene();
     this.scene.background = NIGHT_TOP;
     this.camera = new THREE.PerspectiveCamera(48, window.innerWidth / window.innerHeight, 0.1, 100);
-    this.camera.position.set(0, 4.1, 7.4);
+    this.camera.position.set(0, window.innerWidth < 720 ? 4.55 : 4.1, window.innerWidth < 720 ? 9.4 : 7.4);
     this.camera.lookAt(0, 0.7, 0);
 
     this.renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
@@ -47,7 +47,7 @@ export class SceneManager {
     this.composer.addPass(this.bloomPass);
 
     this.flowerGenerator = new FlowerGenerator(this.scene);
-    this.petals = new PetalSystem(this.scene, window.innerWidth < 700 ? 52 : 92);
+    this.petals = new PetalSystem(this.scene, window.innerWidth < 700 ? 38 : 92);
     this.createWorld();
     this.createStars();
     this.atmosphere = new AtmosphereSystem(this.scene);
@@ -282,16 +282,19 @@ export class SceneManager {
     this.updateDawn(delta);
     this.atmosphere.update(delta, elapsed, this.dawnProgress);
 
-    this.camera.position.x = Math.sin(elapsed * 0.12) * 0.2;
-    this.camera.position.y = 4.08 + Math.sin(elapsed * 0.18) * 0.06;
-    this.camera.lookAt(Math.sin(elapsed * 0.09) * 0.08, 0.78, 0);
+    const mobile = window.innerWidth < 720;
+    this.camera.position.x = Math.sin(elapsed * 0.12) * (mobile ? 0.12 : 0.2);
+    this.camera.position.y = (mobile ? 4.55 : 4.08) + Math.sin(elapsed * 0.18) * 0.05;
+    this.camera.position.z = mobile ? 9.4 : 7.4;
+    this.camera.lookAt(Math.sin(elapsed * 0.09) * 0.06, mobile ? 0.62 : 0.78, 0);
     this.composer.render();
     this.animationFrame = window.requestAnimationFrame(() => this.animate());
   }
 
   handleResize() {
     this.camera.aspect = window.innerWidth / window.innerHeight;
-    this.camera.position.z = window.innerWidth < 720 ? 8.7 : 7.4;
+    this.camera.position.z = window.innerWidth < 720 ? 9.4 : 7.4;
+    this.camera.position.y = window.innerWidth < 720 ? 4.55 : 4.08;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));

@@ -49,8 +49,9 @@ export class MusicManager {
     const startTime = performance.now();
 
     const step = (now) => {
-      const progress = Math.min(1, (now - startTime) / duration);
-      this.audio.volume = startVolume + (volume - startVolume) * easeOutCubic(progress);
+      const progress = Math.min(1, Math.max(0, (now - startTime) / duration));
+      const nextVolume = startVolume + (volume - startVolume) * easeOutCubic(progress);
+      this.audio.volume = Math.min(1, Math.max(0, nextVolume));
       if (progress < 1) {
         this.fadeFrame = requestAnimationFrame(step);
       } else {

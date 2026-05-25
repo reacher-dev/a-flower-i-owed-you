@@ -21,7 +21,7 @@ export class AtmosphereSystem {
       depthWrite: false
     });
 
-    const count = window.innerWidth < 720 ? 70 : 130;
+    const count = window.innerWidth < 720 ? 46 : 130;
     for (let i = 0; i < count; i += 1) {
       const radius = THREE.MathUtils.randFloat(1.2, 6.8);
       const angle = Math.random() * Math.PI * 2;
@@ -48,7 +48,7 @@ export class AtmosphereSystem {
       depthWrite: false
     });
 
-    const count = window.innerWidth < 720 ? 22 : 42;
+    const count = window.innerWidth < 720 ? 16 : 42;
     for (let i = 0; i < count; i += 1) {
       const firefly = new THREE.Mesh(geometry, material.clone());
       firefly.position.set(

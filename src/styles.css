@@ -362,18 +362,37 @@ h1 {
 }
 
 @media (max-width: 720px) {
+  button {
+    padding: 0.78rem 1.05rem;
+    font-size: 0.86rem;
+  }
+
+  .music-toggle {
+    right: 0.75rem;
+    top: 0.75rem;
+    min-width: 5.8rem;
+    padding: 0.58rem 0.75rem;
+    font-size: 0.74rem;
+  }
+
   .story-ui {
     top: 1rem;
+    left: 1rem;
+    width: min(21.5rem, calc(100vw - 2rem));
+    padding: 0.95rem 1rem;
   }
 
   h1 {
-    max-width: 11ch;
+    max-width: 10.5ch;
+    font-size: clamp(2.15rem, 12vw, 3.25rem);
+    line-height: 1;
   }
 
   .story-ui.compact h1,
   .story-ui.final-story h1 {
-    max-width: 12.5ch;
-    font-size: clamp(1.7rem, 9vw, 3rem);
+    max-width: 13ch;
+    font-size: clamp(1.55rem, 8vw, 2.35rem);
+    line-height: 1.08;
   }
 
   #story-copy {
@@ -381,7 +400,16 @@ h1 {
   }
 
   .final-card {
-    bottom: 1rem;
+    bottom: 8.8rem;
+    width: calc(100vw - 1.5rem);
+    padding: 1rem 0.9rem 1.05rem;
+    max-height: 45vh;
+  }
+
+  .final-card p {
+    margin-bottom: 0.72rem;
+    font-size: clamp(1rem, 5.4vw, 1.35rem);
+    line-height: 1.3;
   }
 
   .memory-keepsakes {
@@ -389,9 +417,16 @@ h1 {
     align-items: flex-end;
     gap: 0.55rem;
     inset: auto 0 0;
-    min-height: 9.2rem;
-    padding: 0 0.75rem 1rem;
-    overflow: hidden;
+    min-height: 8.4rem;
+    padding: 0 0.7rem max(0.85rem, env(safe-area-inset-bottom));
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .memory-keepsakes::-webkit-scrollbar {
+    display: none;
   }
 
   .memory-print {
@@ -400,7 +435,7 @@ h1 {
     right: auto;
     top: auto;
     bottom: auto;
-    width: 5.7rem;
+    width: 5.25rem;
     flex: 0 0 auto;
     padding: 0.3rem 0.3rem 0.45rem;
   }
