@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#100f2d" />
+    <title>A Flower I Owed You</title>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="garden-canvas" aria-label="An interactive romantic flower garden"></canvas>
+      <audio id="background-music" src="/audio/background-music.mp3" preload="auto"></audio>
+      <button
+        id="music-toggle"
+        class="music-toggle"
+        type="button"
+        aria-pressed="false"
+        hidden
+      >
+        Music off
+      </button>
+
+      <main class="story-ui" aria-live="polite">
+        <h1 id="story-title">I missed the flower on 5/20.</h1>
+        <p id="story-copy"></p>
+        <button id="primary-action" type="button">Plant it anyway</button>
+      </main>
+
+      <section id="final-card" class="final-card" aria-hidden="true">
+        <p>
+          I didn’t give you flowers on 5/20,<br />
+          so I made a little garden for you instead.
+        </p>
+        <p>Next time, I’ll bring the real ones too.</p>
+        <button id="replay-action" type="button">Replay the garden</button>
+      </section>
+
+      <aside id="memory-keepsakes" class="memory-keepsakes" aria-hidden="true">
+        <figure class="memory-print memory-print-a">
+          <img src="/memories/together-1.jpg" alt="一起變胖" />
+          <figcaption>一起變胖</figcaption>
+        </figure>
+        <figure class="memory-print memory-print-b">
+          <img src="/memories/serious-yuchen.jpg" alt="認真的于梣" />
+          <figcaption>認真的于梣</figcaption>
+        </figure>
+        <figure class="memory-print memory-print-c">
+          <img src="/memories/together-2.jpg" alt="一起變胖" />
+          <figcaption>一起變胖</figcaption>
+        </figure>
+        <figure class="memory-print memory-print-d">
+          <img src="/memories/told-you.jpg" alt="就跟你說" />
+          <figcaption>就跟你說</figcaption>
+        </figure>
+      </aside>
+
+      <div id="message-layer" class="message-layer" aria-hidden="true"></div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

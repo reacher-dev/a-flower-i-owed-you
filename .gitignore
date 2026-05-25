@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.DS_Store
+
+# Local source media kept outside the deployed app bundle.
+*.HEIC
+*.textClipping
+截圖 *.png
+Ed Sheeran - Thinking Out Loud (Official Lyric Video) - Ed Sheeran (youtube).mp3
+一起變胖1.PNG
+一起變胖2.JPG
